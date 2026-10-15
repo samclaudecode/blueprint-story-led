@@ -52,7 +52,7 @@ content:
           - { name: button, label: Button text (preview only), type: string }
           - { name: embed_url, label: Form URL (SmartRaise), type: string }
           - { name: embed_height, label: Form height (px), type: number, description: "Increase if the form is cut off." }
-          - { name: embed_html, label: Advanced - custom embed code (overrides Form URL), type: code }
+          - { name: embed_html, label: Advanced - custom embed code (overrides Form URL), type: text, description: "Paste the full embed snippet from SmartRaise." }
           - { name: fallback_url, label: Advanced - link instead of embedding (shows a button), type: string }
       - name: donate
         label: Donation form (SmartRaise)
@@ -65,7 +65,7 @@ content:
           - { name: impact, label: Impact line (preview only), type: string, description: "e.g. <b>$15</b> funds a week of organising." }
           - { name: embed_url, label: Form URL (SmartRaise), type: string }
           - { name: embed_height, label: Form height (px), type: number, description: "Increase if the form is cut off." }
-          - { name: embed_html, label: Advanced - custom embed code (overrides Form URL), type: code }
+          - { name: embed_html, label: Advanced - custom embed code (overrides Form URL), type: text, description: "Paste the full embed snippet from SmartRaise." }
           - { name: fallback_url, label: Advanced - link instead of embedding (shows a button), type: string }
 
   - name: updates
