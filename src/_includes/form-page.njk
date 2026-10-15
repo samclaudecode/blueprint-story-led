@@ -1,0 +1,13 @@
+---
+layout: base.njk
+---
+{% set cfg = site[page.fileSlug] %}
+<section class="soft">
+  <div class="wrap with-aside">
+    <div>
+      <h1>{{ cfg.title or title }}</h1>
+      <div class="prose">{{ content | safe }}</div>
+    </div>
+    <div class="card-box">{% include "embed.njk" %}</div>
+  </div>
+</section>

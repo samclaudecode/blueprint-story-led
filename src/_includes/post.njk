@@ -1,0 +1,20 @@
+---
+layout: base.njk
+---
+<article>
+  <section class="soft">
+    <div class="wrap narrow">
+      <p class="meta"><a href="{{ '/updates/' | url }}">← All updates</a></p>
+      <h1>{{ title }}</h1>
+      <p class="meta"><time datetime="{{ date | isoDate }}">{{ date | readableDate }}</time></p>
+    </div>
+  </section>
+  <section class="wrap narrow">
+    {% if image %}<img class="post-image" src="{{ image | url }}" alt="">{% endif %}
+    {{ content | safe }}
+    <p class="cta">
+      <a class="btn" href="{{ '/donate/' | url }}">{{ site.donate.title or 'Donate' }}</a>
+      {% if site.petition.enabled !== false %}<a class="btn btn-outline" href="{{ '/petition/' | url }}">{{ site.petition.title or 'Sign the petition' }}</a>{% endif %}
+    </p>
+  </section>
+</article>

@@ -1,0 +1,3 @@
+{# A photo in a frame. Duotone sites tint it with the brand colour; with no image (or a failed load) the frame shows a tinted panel.
+   Pass `src`, and optionally `alt` and `cls` (classes for the frame). #}
+<div class="pw {{ cls }}{% if not src %} pw-empty{% endif %}">{% if src %}<img class="photo" src="{{ src | url }}" alt="{{ alt or '' }}" loading="lazy" onerror="this.parentNode.classList.add('pw-empty');this.remove()">{% endif %}</div>

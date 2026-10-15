@@ -1,0 +1,73 @@
+---
+layout: base.njk
+title: Home
+---
+<header class="sl-masthead">
+  <div class="wrap">
+    <p class="eyebrow">{{ story.kicker }}</p>
+    <h1>{{ site.hero.headline | mark(site.hero.highlight) | safe }}</h1>
+    <div class="sl-standfirst">
+      <p class="lead">{{ site.hero.subheadline }}</p>
+      <p class="cta"><a class="btn" href="#donate">{{ site.donate.title }}</a><a class="link-quiet" href="#story">Read the story ↓</a></p>
+    </div>
+  </div>
+  <figure class="wrap sl-figure sl-lead-figure">
+    {% set src = site.hero.image or story.photos[0] %}{% set cls = "sl-lead-photo" %}{% include "photo.njk" %}
+    {% if story.hero_caption %}<figcaption>{{ story.hero_caption }}</figcaption>{% endif %}
+  </figure>
+</header>
+
+<div class="wrap with-aside sl-body">
+  <article class="sl-main">
+    <div id="story" class="prose sl-story">{{ story.intro | safe }}</div>
+
+    {% if story.quote %}
+    <figure class="sl-pull">
+      <blockquote><p>{{ story.quote }}</p></blockquote>
+      <figcaption>{% if story.quote_photo %}<img src="{{ story.quote_photo | url }}" alt="" loading="lazy">{% endif %}{{ story.quote_author }}</figcaption>
+    </figure>
+    {% endif %}
+
+    {% if story.photos[1] or story.photos[2] %}
+    <div class="sl-pair">
+      {% for i in [1, 2] %}
+      <figure class="sl-figure">
+        {% set src = story.photos[i] %}{% set cls = "" %}{% include "photo.njk" %}
+        {% if story.photo_captions[i - 1] %}<figcaption>{{ story.photo_captions[i - 1] }}</figcaption>{% endif %}
+      </figure>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if story.stats | length %}
+    <h2 class="sl-h2">{{ story.stats_heading }}</h2>
+    <dl class="sl-figures">
+      {% for s in story.stats %}
+        <div><dt>{{ s.number }}</dt><dd><strong>{{ s.label }}</strong>{% if s.text %} {{ s.text }}{% endif %}</dd></div>
+      {% endfor %}
+    </dl>
+    {% endif %}
+
+    {% if story.actions | length %}
+    <h2 class="sl-h2">{{ story.help_heading }}</h2>
+    <ul class="actions">
+      {% for a in story.actions %}
+        <li><a href="{{ a.link | url }}"><span class="actions-label">{{ a.title }}</span><span class="actions-title">{{ a.text }}</span><span class="actions-arrow" aria-hidden="true">→</span></a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% include "share.njk" %}
+  </article>
+
+  <aside id="donate" class="sl-aside">
+    <div class="card-box">
+      <p class="ph-title">{{ site.donate.title }}</p>
+      {% if story.ask %}<p class="muted sl-ask">{{ story.ask }}</p>{% endif %}
+      {% set cfg = site.donate %}{% include "embed.njk" %}
+    </div>
+  </aside>
+</div>
+
+{% include "cta-band.njk" %}
+
+{% include "latest-updates.njk" %}

@@ -1,0 +1,6 @@
+{# Stacked action rows: a verb label and what it's for, like "Add your name / Stop the sale". Pass `actions` ({label, title, link}). #}
+<ul class="actions">
+  {% for a in actions %}
+    <li><a href="{{ a.link | url }}"><span class="actions-label">{{ a.label }}</span><span class="actions-title">{{ a.title }}</span><span class="actions-arrow" aria-hidden="true">→</span></a></li>
+  {% endfor %}
+</ul>

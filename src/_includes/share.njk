@@ -1,0 +1,15 @@
+{# Share buttons. Links are filled in with the page address when the page loads. #}
+<div class="share">
+  <span class="share-label">{{ share_label or 'Share this campaign' }}</span>
+  <a data-share="whatsapp" href="#" rel="noopener" target="_blank">WhatsApp</a>
+  <a data-share="facebook" href="#" rel="noopener" target="_blank">Facebook</a>
+  <a data-share="x" href="#" rel="noopener" target="_blank">X</a>
+  <a data-share="email" href="#">Email</a>
+</div>
+<script>
+  (function () {
+    var u = encodeURIComponent(location.href), t = encodeURIComponent(document.title);
+    var links = { whatsapp: "https://wa.me/?text=" + t + "%20" + u, facebook: "https://www.facebook.com/sharer/sharer.php?u=" + u, x: "https://x.com/intent/post?url=" + u + "&text=" + t, email: "mailto:?subject=" + t + "&body=" + u };
+    document.querySelectorAll("[data-share]").forEach(function (a) { a.href = links[a.dataset.share]; });
+  })();
+</script>

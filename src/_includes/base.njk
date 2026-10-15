@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if title and page.url != "/" %}{{ title }} · {% endif %}{{ site.name }}</title>
+  <meta name="description" content="{{ description or site.tagline }}">
+  <meta property="og:title" content="{{ title or site.name }}">
+  <meta property="og:description" content="{{ description or site.tagline }}">
+  {% if site.hero.image %}<meta property="og:image" content="{{ site.hero.image | url }}">{% endif %}
+  {%- set font = site.font or "clean" %}
+  {%- set fonts = {
+    clean: "family=Roboto:wght@400;500;700;900",
+    friendly: "family=Source+Sans+3:wght@400;600;700;800",
+    classic: "family=Merriweather:wght@700;900&family=Source+Sans+3:wght@400;600;700",
+    bold: "family=Archivo:wdth,wght@62..125,400..900",
+    grotesque: "family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Public+Sans:wght@400;600;700",
+    editorial: "family=Newsreader:opsz,wght@6..72,400..700&family=Public+Sans:wght@400;600;700"
+  } %}
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?{{ fonts[font] or fonts.clean }}&display=swap">
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/theme.css' | url }}">
+  <style>:root { --brand: {{ site.primary_color or '#2f855a' }}; --button: {{ site.button_color or site.primary_color or '#2f855a' }}; --accent: {{ site.accent_color or '#ffd84d' }}; }</style>
+</head>
+<body class="tpl-{{ site.template or 'base' }} font-{{ site.font or 'clean' }} photos-{{ site.photo_style or 'duotone' }}">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="{{ '/' | url }}">
+        {% if site.logo %}<img src="{{ site.logo | url }}" alt="{{ site.name }}" height="40">{% else %}{{ site.name }}{% endif %}
+      </a>
+      <nav>
+        {% if site.main_site_url %}<a class="back" href="{{ site.main_site_url }}">Back to website</a>{% endif %}
+        <a href="{{ '/updates/' | url }}">Updates</a>
+        {% if site.petition.enabled !== false %}<a href="{{ '/petition/' | url }}">Petition</a>{% endif %}
+        <a class="btn btn-sm" href="{{ '/donate/' | url }}">Donate</a>
+      </nav>
+    </div>
+  </header>
+  <main>{{ content | safe }}</main>
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="footer-name">{{ site.name }}</p>
+        {% if site.tagline %}<p>{{ site.tagline }}</p>{% endif %}
+      </div>
+      <div class="footer-links">
+        {% if site.main_site_url %}<a href="{{ site.main_site_url }}">Main website</a>{% endif %}
+        {% if site.contact_email %}<a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>{% endif %}
+        {% for key, link in site.social %}{% if link %}<a href="{{ link }}" rel="noopener">{{ key | capitalize }}</a>{% endif %}{% endfor %}
+      </div>
+      {% if site.footer_text %}<p class="footer-legal">{{ site.footer_text }}</p>{% endif %}
+    </div>
+  </footer>
+</body>
+</html>

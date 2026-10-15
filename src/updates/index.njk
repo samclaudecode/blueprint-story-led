@@ -1,0 +1,24 @@
+---
+layout: base.njk
+title: Campaign updates
+permalink: /updates/
+---
+<section>
+  <div class="wrap">
+    <h1>Campaign updates</h1>
+    <div class="grid-3">
+    {% for post in collections.updates %}
+      <article class="card">
+        {% set src = post.data.image %}{% set cls = "" %}{% include "photo.njk" %}
+        <div class="card-body">
+          <h3><a href="{{ post.url | url }}">{{ post.data.title }}</a></h3>
+          <p class="meta">{{ post.date | readableDate }}</p>
+          {% if post.data.summary %}<p>{{ post.data.summary }}</p>{% endif %}
+        </div>
+      </article>
+    {% else %}
+      <p>No updates yet.</p>
+    {% endfor %}
+    </div>
+  </div>
+</section>

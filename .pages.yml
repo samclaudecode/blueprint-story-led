@@ -1,0 +1,139 @@
+# Pages CMS configuration — https://pagescms.org/docs/configuration/
+media:
+  input: src/assets/uploads
+  output: /assets/uploads
+
+content:
+  - name: settings
+    label: Site settings
+    type: file
+    path: src/_data/site.json
+    fields:
+      - { name: name, label: Campaign name, type: string }
+      - { name: tagline, label: Tagline (used in search/social previews), type: string }
+      - { name: logo, label: Logo, type: image }
+      - { name: primary_color, label: Brand colour, type: string, description: "Hex code, e.g. #e4312b. Used for buttons and highlights." }
+      - { name: button_color, label: Button colour, type: string, description: "Optional. Defaults to the brand colour." }
+      - { name: accent_color, label: Highlight colour, type: string, description: "Used for marker highlights and small details, e.g. #ffd84d." }
+      - { name: font, label: Font style, type: select, options: { values: [bold, grotesque, editorial, clean, friendly, classic] }, description: "bold = Archivo, grotesque = Bricolage Grotesque, editorial = Newsreader, clean = Roboto, friendly = Source Sans, classic = Merriweather." }
+      - { name: photo_style, label: Photo style, type: select, options: { values: [duotone, natural] }, description: "Duotone tints every photo in your brand colour so mixed photos look like a set." }
+      - { name: main_site_url, label: Main website URL, type: string, description: "Adds a Back to website link." }
+      - { name: contact_email, label: Contact email, type: string }
+      - { name: footer_text, label: Footer / disclaimer, type: text }
+      - name: social
+        label: Social links
+        type: object
+        fields:
+          - { name: twitter, label: X / Twitter URL, type: string }
+          - { name: facebook, label: Facebook URL, type: string }
+          - { name: instagram, label: Instagram URL, type: string }
+      - name: hero
+        label: Home page banner
+        type: object
+        fields:
+          - { name: headline, label: Headline, type: string }
+          - { name: highlight, label: Highlighted words, type: string, description: "Part of the headline to underline with the highlight colour." }
+          - { name: subheadline, label: Sub-headline, type: text }
+          - { name: image, label: Background image, type: image }
+      - name: cta_band
+        label: Closing banner
+        type: object
+        fields:
+          - { name: headline, label: Headline, type: string }
+          - { name: text, label: Text, type: text }
+          - { name: image, label: Background photo, type: image }
+      - name: petition
+        label: Petition form (SmartRaise)
+        type: object
+        description: Paste the SmartRaise form URL into "Form URL" - it is shown on the page in an iframe.
+        fields:
+          - { name: enabled, label: Show the petition, type: boolean }
+          - { name: title, label: Heading, type: string }
+          - { name: button, label: Button text (preview only), type: string }
+          - { name: embed_url, label: Form URL (SmartRaise), type: string }
+          - { name: embed_height, label: Form height (px), type: number, description: "Increase if the form is cut off." }
+          - { name: embed_html, label: Advanced - custom embed code (overrides Form URL), type: code }
+          - { name: fallback_url, label: Advanced - link instead of embedding (shows a button), type: string }
+      - name: donate
+        label: Donation form (SmartRaise)
+        type: object
+        description: Paste the SmartRaise form URL into "Form URL" - it is shown on the page in an iframe.
+        fields:
+          - { name: title, label: Heading, type: string }
+          - { name: button, label: Button text (preview only), type: string }
+          - { name: amounts, label: Suggested amounts (preview only), type: string, list: true, description: "Shown in the form preview until a SmartRaise form is connected." }
+          - { name: impact, label: Impact line (preview only), type: string, description: "e.g. <b>$15</b> funds a week of organising." }
+          - { name: embed_url, label: Form URL (SmartRaise), type: string }
+          - { name: embed_height, label: Form height (px), type: number, description: "Increase if the form is cut off." }
+          - { name: embed_html, label: Advanced - custom embed code (overrides Form URL), type: code }
+          - { name: fallback_url, label: Advanced - link instead of embedding (shows a button), type: string }
+
+  - name: updates
+    label: Campaign updates
+    type: collection
+    path: src/updates
+    filename: "{year}-{month}-{day}-{primary}.md"
+    exclude: [index.njk, updates.json]
+    view:
+      fields: [title, date]
+      primary: title
+      sort: [date]
+      default: { sort: date, order: desc }
+    fields:
+      - { name: title, label: Title, type: string, required: true }
+      - { name: date, label: Date, type: date, required: true }
+      - { name: summary, label: Short summary, type: text, description: Shown on the home page and update list. }
+      - { name: image, label: Cover image, type: image }
+      - { name: body, label: Body, type: rich-text }
+
+  - name: petition_page
+    label: Petition page text
+    type: file
+    path: src/petition.md
+    format: yaml-frontmatter
+    fields:
+      - { name: body, label: Page content, type: rich-text }
+
+  - name: donate_page
+    label: Donate page text
+    type: file
+    path: src/donate.md
+    format: yaml-frontmatter
+    fields:
+      - { name: body, label: Page content, type: rich-text }
+
+  - name: story
+    label: Story (home page)
+    type: file
+    path: src/_data/story.json
+    fields:
+      - { name: kicker, label: Small heading above the headline, type: string }
+      - { name: hero_caption, label: Caption under the main photo, type: string }
+      - { name: photos, label: Photos (up to 3), type: image, list: { max: 3 } }
+      - { name: photo_captions, label: Captions for photos 2 and 3, type: string, list: { max: 2 } }
+      - { name: quote_photo, label: Quote portrait, type: image }
+      - { name: intro, label: Story text, type: rich-text }
+      - { name: help_heading, label: Action cards heading, type: string }
+      - name: actions
+        label: Action cards
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Title, type: string }
+          - { name: text, label: Text, type: text }
+          - { name: link, label: Link, type: string }
+          - { name: photo, label: Photo, type: image }
+      - { name: stats_heading, label: Numbers heading, type: string }
+      - { name: stats_text, label: Numbers text, type: text }
+      - name: stats
+        label: Impact numbers
+        type: object
+        list: true
+        fields:
+          - { name: icon, label: Icon, type: select, options: { values: [people, book, heart, home, star, megaphone, leaf, water, clock, medical, gavel] } }
+          - { name: number, label: Number, type: string }
+          - { name: label, label: Label, type: string }
+          - { name: text, label: Caption, type: string }
+      - { name: quote, label: Supporter quote, type: text }
+      - { name: quote_author, label: Quote attribution, type: string }
+      - { name: ask, label: Text above the donation form, type: text }

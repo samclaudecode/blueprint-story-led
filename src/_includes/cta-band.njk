@@ -1,0 +1,13 @@
+{# Full-width closing banner with a photo behind it. Set in Site settings → Closing banner. #}
+{% if site.cta_band and site.cta_band.headline %}
+<section class="cta-band"{% if site.cta_band.image %} style="background-image:url('{{ site.cta_band.image | url }}')"{% endif %}>
+  <div class="wrap narrow center overlay-text">
+    <h2>{{ site.cta_band.headline }}</h2>
+    {% if site.cta_band.text %}<p class="lead">{{ site.cta_band.text }}</p>{% endif %}
+    <p class="cta" style="justify-content:center">
+      <a class="btn btn-lg" href="{{ '/donate/' | url }}">Donate</a>
+      {% if site.petition.enabled !== false %}<a class="btn btn-ghost btn-lg" href="{{ '/petition/' | url }}">{{ site.petition.button or 'Sign the petition' }}</a>{% endif %}
+    </p>
+  </div>
+</section>
+{% endif %}

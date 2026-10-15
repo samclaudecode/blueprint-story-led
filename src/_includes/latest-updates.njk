@@ -1,0 +1,19 @@
+<section class="soft">
+  <div class="wrap">
+    <div class="cta" style="justify-content:space-between"><h2>Latest updates</h2><a class="link-quiet" href="{{ '/updates/' | url }}">All updates →</a></div>
+    <div class="grid-3">
+    {% for post in collections.updates | head(3) %}
+      <article class="card">
+        {% set src = post.data.image %}{% set cls = "" %}{% include "photo.njk" %}
+        <div class="card-body">
+          <p class="meta">{{ post.date | readableDate }}</p>
+          <h3><a href="{{ post.url | url }}">{{ post.data.title }}</a></h3>
+          {% if post.data.summary %}<p class="muted">{{ post.data.summary }}</p>{% endif %}
+        </div>
+      </article>
+    {% else %}
+      <p>No updates yet.</p>
+    {% endfor %}
+    </div>
+  </div>
+</section>

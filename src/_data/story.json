@@ -1,0 +1,56 @@
+{
+  "intro": "<p>For forty years, the Eastside Library has been the only free place in our neighbourhood to study, get online, or just get warm. Next spring, the council wants to turn it into parking.</p><p>Maria, a nurse who did her coursework here at night, put it simply: \"Without this building, I wouldn't have my job.\" There are thousands of stories like hers.</p><p>We're a volunteer group of neighbours, parents and librarians. We've filed a legal challenge and we're taking our case to every council member. We can win this, but not without you.</p>",
+  "stats_heading": "Our impact",
+  "stats": [
+    {
+      "icon": "people",
+      "number": "12,000",
+      "label": "Neighbours signed up",
+      "text": "Residents who have joined the campaign."
+    },
+    {
+      "icon": "book",
+      "number": "300",
+      "label": "Kids in homework club",
+      "text": "Children who use the library every week after school."
+    },
+    {
+      "icon": "megaphone",
+      "number": "9",
+      "label": "Council meetings packed",
+      "text": "Public meetings where we filled the gallery."
+    }
+  ],
+  "quote": "This library is where my kids learned to love reading. I won't let it go without a fight.",
+  "quote_author": "Denise, Eastside parent",
+  "ask": "Your gift funds our legal challenge and keeps our volunteers organizing. Give once, or join as a monthly supporter.",
+  "photos": [
+    "https://images.unsplash.com/photo-1634992279809-73a2fcb35733?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1762475833699-53a01f26565a?auto=format&fit=crop&w=1000&q=80",
+    "https://images.unsplash.com/photo-1758687127021-714aca57f554?auto=format&fit=crop&w=1000&q=80"
+  ],
+  "stats_text": "What volunteers have achieved since the closure was announced.",
+  "help_heading": "How you can help",
+  "actions": [
+    {
+      "title": "Take action",
+      "text": "Write to your councillor and tell them what the library means to you. It takes two minutes.",
+      "link": "/updates/",
+      "photo": ""
+    },
+    {
+      "title": "Donate today",
+      "text": "Your gift funds our legal challenge and keeps volunteers organising until the vote.",
+      "link": "#donate",
+      "photo": ""
+    }
+  ],
+  "quote_photo": "https://images.unsplash.com/photo-1758598738003-3c2ea5c8b166?auto=format&fit=crop&w=400&q=80",
+  "band_photo": "https://images.unsplash.com/photo-1680178776508-41a276595b0f?auto=format&fit=crop&w=2200&q=80",
+  "kicker": "The campaign to save Eastside Library",
+  "hero_caption": "Families on the steps of Eastside Library.",
+  "photo_captions": [
+    "Homework club runs four nights a week.",
+    "Saturday story time draws forty families."
+  ]
+}

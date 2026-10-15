@@ -1,0 +1,11 @@
+{# Impact numbers. Pass `stats` (list of {icon, number, label, text}). #}
+<div class="grid-3">
+  {% for s in stats %}
+    <div class="stat">
+      {% if s.icon %}{% set name = s.icon %}{% include "icon.njk" %}{% endif %}
+      <p class="stat-num">{{ s.number }}</p>
+      <h3>{{ s.label }}</h3>
+      {% if s.text %}<p>{{ s.text }}</p>{% endif %}
+    </div>
+  {% endfor %}
+</div>

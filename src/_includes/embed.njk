@@ -1,0 +1,25 @@
+{# Renders a SmartRaise form: raw snippet first, then iframe URL, then a button link. #}
+{% if cfg.embed_html %}
+  <div class="embed">{{ cfg.embed_html | safe }}</div>
+{% elif cfg.embed_url %}
+  <iframe class="embed-frame" src="{{ cfg.embed_url }}" style="height:{{ cfg.embed_height or 700 }}px" title="{{ cfg.title }}" loading="lazy"></iframe>
+{% elif cfg.fallback_url %}
+  <p><a class="btn" href="{{ cfg.fallback_url }}">{{ cfg.title }}</a></p>
+{% else %}
+  {# Shown until a SmartRaise form is connected, so previews still look like a real page. #}
+  <div class="ph" role="note">
+    {% if cfg.amounts %}
+      <div class="ph-toggle"><span class="on">One-off</span><span>Monthly</span></div>
+      <div class="ph-amounts">{% for a in cfg.amounts %}<span{% if loop.index == 2 %} class="on"{% endif %}>{{ a }}</span>{% endfor %}</div>
+      {% if cfg.impact %}<p class="ph-impact">{{ cfg.impact | safe }}</p>{% endif %}
+      <div class="ph-row"><span class="ph-field">First name<i></i></span><span class="ph-field">Last name<i></i></span></div>
+      <span class="ph-field">Email<i></i></span>
+    {% else %}
+      <div class="ph-row"><span class="ph-field">First name<i></i></span><span class="ph-field">Last name<i></i></span></div>
+      <div class="ph-row"><span class="ph-field">Email<i></i></span><span class="ph-field">Postcode<i></i></span></div>
+    {% endif %}
+    <span class="ph-btn">{{ cfg.button or cfg.title }}</span>
+    <p class="ph-secure"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg> Secure {{ 'payment' if cfg.amounts else 'sign-up' }} powered by SmartRaise</p>
+    <p class="ph-note">Preview only. Paste your SmartRaise form URL in Site settings.</p>
+  </div>
+{% endif %}

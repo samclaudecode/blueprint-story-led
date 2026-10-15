@@ -1,0 +1,6 @@
+{# A scrolling strip of short messages. Pass `items` (strings). Stands still for people who prefer reduced motion. #}
+<div class="ticker" aria-label="{{ items | join('. ') }}">
+  <div class="ticker-track" aria-hidden="true">
+    {% for n in [1, 2] %}{% for t in items %}<span>{{ t }}</span>{% endfor %}{% endfor %}
+  </div>
+</div>

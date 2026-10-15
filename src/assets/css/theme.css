@@ -1,0 +1,38 @@
+/* Story-Led Appeal ("Editorial"): reads like a long-form magazine feature, with the donation card riding alongside. */
+.tpl-story-led { --soft: #f3f1ec; }
+.tpl-story-led .site-header { border-bottom: 2px solid var(--ink); }
+.sl-masthead { padding: 64px 0 0; }
+.sl-masthead .eyebrow { color: var(--brand); }
+.sl-masthead h1 { font-size: clamp(3rem, 8.5vw, 7rem); line-height: .92; max-width: 13ch; font-weight: 500; }
+.sl-masthead h1 .mark { background: none; font-style: italic; color: var(--brand); }
+.sl-standfirst { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px 56px; align-items: end; border-top: 2px solid var(--ink); padding-top: 20px; margin-top: 28px; }
+.sl-standfirst .lead { max-width: 40em; margin: 0; font-family: var(--font-head); font-size: clamp(1.25rem, 2.2vw, 1.55rem); line-height: 1.4; }
+.sl-standfirst .cta { margin: 0; }
+.sl-figure { margin: 0; }
+.sl-figure figcaption { font-size: 14px; color: var(--muted); padding-top: 10px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+.sl-lead-figure { margin-top: 40px; }
+.sl-lead-photo { aspect-ratio: 21 / 9; min-height: 0; }
+.sl-body { padding-top: 56px; padding-bottom: 80px; }
+.sl-story { font-size: 1.2rem; }
+.sl-story p { line-height: 1.7; }
+.sl-story p:first-child::first-letter { float: left; font-family: var(--font-head); font-weight: 600; font-size: 5.2em; line-height: .8; padding: 8px 12px 0 0; color: var(--brand); }
+.sl-pull { margin: 56px 0; padding: 36px 0; border-top: 2px solid var(--ink); border-bottom: 2px solid var(--ink); }
+.sl-pull blockquote { margin: 0; }
+.sl-pull p { font-family: var(--font-head); font-style: italic; font-size: clamp(1.7rem, 3.2vw, 2.4rem); line-height: 1.2; margin: 0 0 20px; text-wrap: balance; }
+.sl-pull p::before { content: "“"; color: var(--accent); font-size: 1.6em; line-height: 0; vertical-align: -.3em; margin-right: .05em; }
+.sl-pull figcaption { display: flex; align-items: center; gap: 12px; font-weight: 700; }
+.sl-pull img { width: 52px; height: 52px; border-radius: 999px; object-fit: cover; }
+.sl-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 48px 0; }
+.sl-pair .pw { aspect-ratio: 4 / 5; min-height: 0; }
+.sl-h2 { margin-top: 56px; }
+.sl-figures { margin: 0; border-top: 2px solid var(--ink); }
+.sl-figures div { display: grid; grid-template-columns: minmax(120px, .4fr) 1fr; gap: 20px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.sl-figures dt { font-family: var(--font-head); font-size: clamp(2.2rem, 4vw, 3rem); line-height: 1; color: var(--brand); font-weight: 600; }
+.sl-figures dd { margin: 0; color: var(--muted); }
+.sl-figures dd strong { color: var(--ink); }
+.tpl-story-led .actions-title { font-size: 1.2rem; font-family: var(--font-body); font-weight: 500; letter-spacing: 0; }
+.tpl-story-led .card-box { box-shadow: none; border-width: 2px; border-top: 8px solid var(--brand); }
+.tpl-story-led .ph-amounts .on { background: var(--brand); color: #fff; border-color: var(--brand); }
+.sl-ask { font-size: 16px; margin: 6px 0 18px; }
+@media (min-width: 881px) { .sl-aside { position: sticky; top: 90px; } }
+@media (max-width: 700px) { .sl-standfirst { grid-template-columns: 1fr; } .sl-lead-photo { aspect-ratio: 4 / 3; } .sl-pair { grid-template-columns: 1fr; } }
